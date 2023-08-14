@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  express_postgres:
+    image: postgres
+    container_name: express_postgres
+    restart: unless-stopped
+    env_file: ./.env
+    environment:
+      POSTGRES_DB: $DB_NAME
+      POSTGRES_USER: $DB_USER
+      POSTGRES_PASSWORD: $DB_PWD
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+  express:
+    depends_on:
+      - express_postgres
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: express
+    restart: unless-stopped
+    env_file: ./.env
+    environment:
+      - NODE_ENV: $NODE_ENV
+      - PORT: $PORT
+      - SECRET: $SECRET
+      - DB_NAME: $DB_NAME
+      - DB_HOST: $DB_HOST
+      - DB_USER: $DB_USER
+      - DB_PWD: $DB_PWD
+    ports:
+      - $PORT:$PORT
+
+volumes:
+  postgres-data:
+
