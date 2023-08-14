@@ -1,0 +1,22 @@
+
+<br>
+<h2>Hi {{ user.name }}</h2>
+<br>
+{{#if isAdmin }}
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>ROLE</th>
+        <th>Actions</th>
+    </tr>
+    {{#each users}}
+    <tr>
+        <td>{{ name }}</td>
+        <td>{{ email }}</td>
+        <td>{{ role }}</td>
+        <td><a class="btn btn-danger" href="/account/remove/{{ id }}">Remove</a></td>
+    </tr>
+    {{/each}}
+</table>
+{{/if}}

@@ -1,0 +1,15 @@
+
+form {
+    max-width: 900px;
+    display: inline-block;
+    width: 100%;
+}
+@media only screen and (min-width: 800px) {
+    form {
+        width: 70%;
+    }
+}
+
+.btn-form {
+    width: 100%;
+}

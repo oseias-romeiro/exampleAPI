@@ -1,0 +1,35 @@
+
+<div class="card-body text-center">
+    <h2 class="mt-5">Sing up</h2>
+    <hr><br>
+    <form action="" method="post" autocomplete="off">
+        <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+        <div class="form-floating mb-3">
+            <input type="text" name="name" class="form-control" required>
+            <label class="form-label" for="name">Name: </label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" name="email" class="form-control" required>
+            <label class="form-label" for="email">Email: </label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="password" name="password" class="form-control" required>
+            <label class="form-label" for="password">Password: </label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="password" name="password2" class="form-control" required>
+            <label class="form-label" for="password2">Repeat password: </label>
+        </div>
+        
+        <div class="form-floating mb-3">
+            <select class="form-select" name="role" id="">
+                <option selected value="USER">User</option>
+                <option value="ADMIN">Admin</option>
+            </select>
+            <label class="form-label" for="role">Role:</label>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-success btn-form" >Sing up</button>
+        <br>
+    </form>
+</div>
