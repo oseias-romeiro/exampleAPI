@@ -11,7 +11,7 @@ services:
       POSTGRES_USER: $DB_USER
       POSTGRES_PASSWORD: $DB_PWD
     volumes:
-      - postgres-data:/var/lib/postgresql/data
+      - ./postgres_express-data:/var/lib/postgresql/data
     ports:
       - 5432:5432
   express:
@@ -24,16 +24,15 @@ services:
     restart: unless-stopped
     env_file: ./.env
     environment:
-      - NODE_ENV: $NODE_ENV
-      - PORT: $PORT
-      - SECRET: $SECRET
-      - DB_NAME: $DB_NAME
-      - DB_HOST: $DB_HOST
-      - DB_USER: $DB_USER
-      - DB_PWD: $DB_PWD
+      NODE_ENV: $NODE_ENV
+      PORT: $PORT
+      SECRET: $SECRET
+      DB_NAME: $DB_NAME
+      DB_HOST: $DB_HOST
+      DB_USER: $DB_USER
+      DB_PWD: $DB_PWD
+    entrypoint: ["bash", "-c", "npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all && npm run start"] 
     ports:
       - $PORT:$PORT
-
-volumes:
-  postgres-data:
-
+    links:
+      - "express_postgres:express_postgres"
