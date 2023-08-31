@@ -2,6 +2,8 @@
 
 This is a simple web app that demonstrates CRUD (Create, Read, Update, Delete) operations using Express, SQLite with Sequelize for the database, flash messages for feedback, and authentication with admin user privileges.
 
+Try: [expresstemplate.oseiasromeiro.repl.co](https://expresstemplate.oseiasromeiro.repl.co/)
+
 ## Features
 
 - User registration and login
